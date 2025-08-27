@@ -1,0 +1,79 @@
+{
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "metadata": {
+    "colab": {
+      "provenance": [],
+      "authorship_tag": "ABX9TyNyUXqB8nJuvEn5XLf8ULTj",
+      "include_colab_link": true
+    },
+    "kernelspec": {
+      "name": "python3",
+      "display_name": "Python 3"
+    },
+    "language_info": {
+      "name": "python"
+    }
+  },
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "view-in-github",
+        "colab_type": "text"
+      },
+      "source": [
+        "<a href=\"https://colab.research.google.com/github/khyathi29/Python/blob/main/Dataset%20Classification\" target=\"_parent\"><img src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open In Colab\"/></a>"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "# Simple Data Classification Project\n",
+        "\n",
+        "from sklearn.datasets import load_iris\n",
+        "from sklearn.model_selection import train_test_split\n",
+        "from sklearn.linear_model import LogisticRegression\n",
+        "from sklearn.metrics import accuracy_score\n",
+        "\n",
+        "# 1. Load dataset\n",
+        "iris = load_iris()\n",
+        "X = iris.data       # features\n",
+        "y = iris.target     # labels\n",
+        "\n",
+        "# 2. Split dataset\n",
+        "X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)\n",
+        "\n",
+        "# 3. Train model\n",
+        "model = LogisticRegression(max_iter=200)\n",
+        "model.fit(X_train, y_train)\n",
+        "\n",
+        "# 4. Test accuracy\n",
+        "y_pred = model.predict(X_test)\n",
+        "print(\"Accuracy:\", accuracy_score(y_test, y_pred))\n",
+        "\n",
+        "# 5. Predict new sample\n",
+        "sample = [[5.1, 3.5, 1.4, 0.2]]  # Sepal length, Sepal width, Petal length, Petal width\n",
+        "print(\"Prediction:\", iris.target_names[model.predict(sample)][0])\n"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "53P5-BKB3LwX",
+        "outputId": "5694a16d-65de-4872-a505-99540a407066"
+      },
+      "execution_count": 16,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Accuracy: 1.0\n",
+            "Prediction: setosa\n"
+          ]
+        }
+      ]
+    }
+  ]
+}
