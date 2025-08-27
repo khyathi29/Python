@@ -1,0 +1,68 @@
+{
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "metadata": {
+    "colab": {
+      "provenance": [],
+      "authorship_tag": "ABX9TyMvvH3txybYqw8dWXTx/gin",
+      "include_colab_link": true
+    },
+    "kernelspec": {
+      "name": "python3",
+      "display_name": "Python 3"
+    },
+    "language_info": {
+      "name": "python"
+    }
+  },
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "view-in-github",
+        "colab_type": "text"
+      },
+      "source": [
+        "<a href=\"https://colab.research.google.com/github/khyathi29/Python/blob/main/Text%20Generator%20Task\" target=\"_parent\"><img src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open In Colab\"/></a>"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 2,
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "uji9YHCM4zFD",
+        "outputId": "11af2b0b-82ec-478d-be88-78fe8eaa582f"
+      },
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "✅ Model ready for text generation!\n"
+          ]
+        }
+      ],
+      "source": [
+        "# Import libraries\n",
+        "import tensorflow as tf\n",
+        "from tensorflow import keras\n",
+        "from tensorflow.keras import layers\n",
+        "\n",
+        "# Build a simple model\n",
+        "model = keras.Sequential([\n",
+        "    layers.Embedding(input_dim=5000, output_dim=64),\n",
+        "    layers.LSTM(128),\n",
+        "    layers.Dense(5000, activation=\"softmax\")\n",
+        "])\n",
+        "\n",
+        "# Compile the model\n",
+        "model.compile(optimizer=\"adam\", loss=\"categorical_crossentropy\")\n",
+        "\n",
+        "print(\"✅ Model ready for text generation!\")\n"
+      ]
+    }
+  ]
+}
